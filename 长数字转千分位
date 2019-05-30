@@ -1,0 +1,26 @@
+	std::string UITools::thousandthsDisplay(const long long &value)
+	{
+		std::string temp = std::to_string(value);
+		int b = temp.size();
+
+		int idx = temp.size() + temp.size() / 3;
+
+		char cha[20] = {};
+		int i = temp.size();
+		int j = 0;
+		while (idx > 0)
+		{
+			j++;
+			if (j == 4)
+			{
+				cha[--idx] = ',';
+				j = 0;
+			}
+			else
+			{
+				cha[--idx] = temp[--i];
+			}
+		}
+		
+		return cha;
+	}
