@@ -1,17 +1,18 @@
-	std::string UITools::thousandthsDisplay(const long long &value)
-	{
-		std::string temp = std::to_string(value);
+	std::string temp = std::to_string(value);
 		int b = temp.size();
 
 		int idx = temp.size() + temp.size() / 3;
-
+		if (temp.size() % 3 ==0) //这里如果数字串的大小刚好能除以3，那么就得少算一位
+		{
+			idx -= 1;
+		}
 		char cha[20] = {};
 		int i = temp.size();
 		int j = 0;
 		while (idx > 0)
 		{
 			j++;
-			if (j == 4)
+			if (j == 4)  //千分位加逗号
 			{
 				cha[--idx] = ',';
 				j = 0;
@@ -23,4 +24,3 @@
 		}
 		
 		return cha;
-	}
